@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class QuickSort2 { 
+public class QuickSort3 { 
 
     public static void quicksort(int[] a) {
     	quicksort(a, 0, (a.length)-1);
@@ -31,6 +31,15 @@ public class QuickSort2 {
 		wall++;
 	    }
 	}
+	int rwall = wall;
+	for(int x = wall; x < R; x++) {
+	    if(a[x] == a[p]) {
+		t = a[rwall];
+		a[rwall] = a[x];
+		a[x] = t;
+		rwall++;
+	    }
+	}
 	t = a[wall];
 	a[wall] = a[R];
 	a[R] = t;
@@ -41,7 +50,7 @@ public class QuickSort2 {
     public static void main(String[] args) {
 	int[] m = new int[15000];
 	for(int x = 0; x < m.length; x++) {
-	    m[x] = (int)(Math.random() * 1);
+	    m[x] = (int)(Math.random() * 2);
 	}
         quicksort(m);
 	System.out.println(Arrays.toString(m));

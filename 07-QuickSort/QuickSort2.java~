@@ -39,9 +39,9 @@ public class QuickSort2 {
 
 
     public static void main(String[] args) {
-	int[] m = new int[15000];
+	int[] m = new int[25];
 	for(int x = 0; x < m.length; x++) {
-	    m[x] = (int)(Math.random() * 1);
+	    m[x] = (int)(Math.random() * 25);
 	}
         quicksort(m);
 	System.out.println(Arrays.toString(m));
