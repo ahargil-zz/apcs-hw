@@ -1,0 +1,57 @@
+public class MyStack {
+    private String[] _stack;
+    private int numEl;
+
+    //constructor 1
+    public MyStack() {
+	_stack = new String[10];
+	numEl = 0;
+    }
+
+    public MyStack(int n) {
+	_stack = new String[n];
+	numEl = 0;
+    }
+    //push 2
+    public void push(String s) {
+	if(_stack[0] == null) {
+	    _stack[0] = s;
+	    numEl += 1;
+	}
+	else {
+	    for(int x = numEl; x > 0; x--) {
+		_stack[x] = _stack[x-1];
+	    }
+	    _stack[0] = s;
+	    numEl += 1;
+	}
+    }
+    /*
+    //pop
+    public String pop() {
+	String s = top.getData();
+	top = top.getNext();
+	numEl -= 1;
+	return s;
+    }
+    //peek
+    public String peek() {
+	return top.getData();
+    }
+    */
+    //isEmpty
+    public boolean isEmpty() {
+	return _stack[0] == null;
+    }
+    //isFull
+
+    //toString
+    public String toString() {
+	String s = "[";
+	for(String x: _stack) {
+	    s += x + ", ";
+	}
+	s += "]";
+	return s;
+    }
+}
