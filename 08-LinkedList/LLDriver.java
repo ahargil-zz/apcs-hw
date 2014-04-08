@@ -12,7 +12,7 @@ public class LLDriver {
 	System.out.println(L);
 	L.add(2, "Carl");
 	System.out.println(L);
-	System.out.println(L.length());
+	System.out.println(L.size());
 	System.out.println(L.find("Mike"));
 	System.out.println(L.get(2));
 	System.out.println(L.set(2, "Molly"));

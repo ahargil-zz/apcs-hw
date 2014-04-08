@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class MyLinkedList<E> implements Iterable{
+public class MyLinkedList<E> implements Iterable<E>{
     private Node<E> head;
     private Node<E> tail;
 
@@ -13,16 +13,12 @@ public class MyLinkedList<E> implements Iterable{
 	}
 
 	public boolean hasNext() {
-	    if(currentNode.getNext() != null) {
-		return true;
-	    }
-	    else {
-		return false;
-	    }
+	    return currentNode.getNext() != null;
 	}
 	public E next() {
+	    E data = currentNode.getData();
 	    currentNode = currentNode.getNext();
-	    return currentNode.getData();
+	    return data;
 	}
 	public void remove() {
 	}

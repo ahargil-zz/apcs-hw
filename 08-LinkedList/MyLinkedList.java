@@ -75,7 +75,7 @@ public class MyLinkedList {
     public int find(String s) { //returns loc of item w/ val s or if not found
 	int ctr = 0;
 	Node tmp = head;
-	while(ctr < this.length()) {
+	while(ctr < this.size()) {
 	    if(tmp.getData().equals(s)) {
 		return ctr;
 	    }
@@ -85,7 +85,7 @@ public class MyLinkedList {
 	return -1;
     }
 
-    public int length() {
+    public int size() {
 	int ctr = 0;
 	Node tmp = head;
 	while(tmp != null) {

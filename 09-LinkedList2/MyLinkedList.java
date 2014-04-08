@@ -1,25 +1,47 @@
 public class MyLinkedList {
     private Node head;
+    private Node tail;
 
     public MyLinkedList() {
 	head = new Node("dummy");
+	tail = new Node("dummytail");
+	head.setNext(tail);
     }
 
     public String toString() {
 	String s = "";
-	Node tmp = head.getNext();
-	while(tmp != null) {
-	    s += tmp + " --> ";
-	    tmp = tmp.getNext();
+	int ctr = 1;
+	if(this.size() == 0) {
+	    return "";
 	}
-	s += tmp;
-	return s;
+	else {
+	    Node tmp = head.getNext();
+	    while(ctr < this.size()) {
+		s += tmp + " --> ";
+		tmp = tmp.getNext();
+		ctr++;
+	    }
+	    s += tmp;
+	    return s;
+	}
     }
 
+    // public void add(String s) {
+    //	Node tmp = new Node(s);
+    //	tmp.setNext(head.getNext()); // you must do this first
+    //	head.setNext(tmp);
+    //}
+
     public void add(String s) {
-	Node tmp = new Node(s);
-	tmp.setNext(head.getNext()); // you must do this first
-	head.setNext(tmp);
+	Node tmp = head;
+	int ctr = 0;
+        while(ctr < this.size()) {
+	    tmp = tmp.getNext();
+	    ctr++;
+	}
+	Node n = new Node(s);
+        n.setNext(tail);
+	tmp.setNext(n);
     }
 
     public void add(int i, String s) { // add @ location i (0 at front).
@@ -88,7 +110,7 @@ public class MyLinkedList {
     public int size() {
 	int ctr = 0;
 	Node tmp = head.getNext();
-	while(tmp != null) {
+	while(tmp != tail) {
 	    tmp = tmp.getNext();
 	    ctr++;
 	}

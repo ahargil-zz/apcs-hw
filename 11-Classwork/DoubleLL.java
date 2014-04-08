@@ -27,20 +27,23 @@ public class DoubleLL<E> {
 	Node<E> n = new Node<E>(d);
 	if(current == null) {
 	    current = n;
+	    n.next = n;
+	    n.prev = n;
 	}
 	else {
 	    n.next = current;
 	    n.prev = current.prev;
-	    if (current.prev != null){
-		current.prev.next = n;
-	    }
+	    //if (current.prev != null){
+	    //	current.prev.next = n;
+	    //}
+	    current.prev.next = n;
 	    current.prev = n;
 	    current = n;
 	}
     }
 
-    public E getCurrent() {
-	return current.getData();
+    public Node<E> getCurrent() {
+	return current;
     }
 
     public void forward() {
@@ -53,16 +56,21 @@ public class DoubleLL<E> {
     }
 
     public String toString() {
-	Node<E> tmp = current;
 	if(current == null) 
-	    return "";
-	
-	while(tmp.getPrev() != null)
-	    tmp = tmp.getPrev();
+	    return "";	
+	if (current == current.getNext()){
+	    return "" + current;
+	}
 
+	Node<E> tmp = current.getNext();
 	
-	String s = "";
-	while(tmp != null) {
+	/*
+	  while(tmp.getPrev() != null)
+	    tmp = tmp.getPrev();
+	*/
+	
+	String s = "" + current + " ";
+	while(tmp != current) {
 	    s = s + tmp.getData() + " ";
 	    tmp = tmp.getNext();
 	}
@@ -73,11 +81,20 @@ public class DoubleLL<E> {
 	DoubleLL<String> L = new DoubleLL<String>();
 	System.out.println(L);
 	L.insert("hello");
+	//System.out.println(L.getCurrent().getNext());
 	System.out.println(L);
 	L.insert("world");
 	System.out.println(L);
 	L.insert("three");
 	System.out.println(L);
+	/*	
+	System.out.println(L.getCurrent().getNext());
+	System.out.println(L.getCurrent().getNext().getNext());
+	System.out.println(L.getCurrent().getNext().getNext().getNext());
+	System.out.println(L.getCurrent().getNext().getNext().getNext().getNext());
+	System.out.println(L.getCurrent().getNext().getNext().getNext().getNext().getNext());
+	*/
+	//System.out.println(L);
 	//First test up to here
 	System.out.println(L.getCurrent());
 	L.forward();

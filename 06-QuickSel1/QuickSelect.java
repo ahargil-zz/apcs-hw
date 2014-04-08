@@ -38,12 +38,6 @@ public class QuickSelect {
         return track;
     }
 
-    public static void swap(int[] a, int i, int j) {
-        int t = a[i];
-        a[i] = a[j];
-        a[j] = t;
-    }
-
     public static void main(String[] args) {
 	int[] a = {7, 8, 2, 5, 0, 9, 13, 35, 6, 3, 24, 1};
 	System.out.println(quickselect(a, 10, 0, a.length -1));

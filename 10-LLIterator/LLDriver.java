@@ -19,5 +19,16 @@ public class LLDriver {
 	System.out.println(L);
 	L.remove(2);
 	System.out.println(L);
+
+	System.out.println();
+	Iterator<String> it = L.iterator();
+	while(it.hasNext()) {
+	    System.out.println(it.next());
+	}
+
+	System.out.println();
+	for(String s: L) {
+	    System.out.println(s);
+	}
     }
 }

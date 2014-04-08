@@ -14,44 +14,52 @@ public class MyStack {
     }
     //push 2
     public void push(String s) {
-	if(_stack[0] == null) {
-	    _stack[0] = s;
-	    numEl += 1;
+	if(numEl >= _stack.length) {
+	    String[] stack2 = new String[(_stack.length)*2];
+	    for(int x = 1; x < numEl; x++) {
+		stack2[x] = _stack[x-1];
+	    }
+	    stack2[0] = s;
+	    _stack = stack2;
 	}
 	else {
-	    for(int x = numEl; x > 0; x--) {
-		_stack[x] = _stack[x-1];
+	    if(this.isEmpty()) {
+		_stack[0] = s;
 	    }
-	    _stack[0] = s;
-	    numEl += 1;
+	    else {
+		for(int x = numEl; x > 0; x--) {
+		    _stack[x] = _stack[x-1];
+		}
+		_stack[0] = s;
+	    }
 	}
+	numEl += 1;
     }
-    /*
     //pop
     public String pop() {
-	String s = top.getData();
-	top = top.getNext();
+	String s = _stack[0];
+	for(int x = 0; x < numEl; x++) {
+	    _stack[x] = _stack[x+1];
+	}
 	numEl -= 1;
 	return s;
     }
     //peek
     public String peek() {
-	return top.getData();
+	return _stack[0];
     }
-    */
     //isEmpty
     public boolean isEmpty() {
 	return _stack[0] == null;
     }
-    //isFull
 
     //toString
     public String toString() {
 	String s = "[";
-	for(String x: _stack) {
-	    s += x + ", ";
+	for(int x = 0; x < numEl-1; x++) {
+	    s += _stack[x] + ", ";
 	}
-	s += "]";
+	s += _stack[numEl-1] + "]";
 	return s;
     }
 }
