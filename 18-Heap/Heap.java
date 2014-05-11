@@ -10,12 +10,12 @@ public class Heap {
 
     public Heap(int[] a) {
 	heap = a;
-	size = 0;
+	size = a.length - 1;
     }
 
     public Heap(int a) {
 	heap = new int[a];
-	size = a.length;
+	size = 0;
     }
 
     private void insert(int n) {
@@ -39,7 +39,12 @@ public class Heap {
     }
 
     private void sort() {
-	
+	int[] a = this.heap;
+	heap = new int[a.length];
+	size = 0;
+	for(int x = 1; x < a.length; x++) {
+	    this.insert(a[x]);
+	}
     }
 	
 
@@ -54,6 +59,27 @@ public class Heap {
 	h.insert(9);
 	for(int x = 1; x <= h.getSize(); x++) {
 	    System.out.print(h.heap[x] + ", ");
+	}
+	System.out.println();
+	int[] a = new int[10];
+	a[0] = 0;
+	a[1] = 10;
+	a[2] = 20;
+	a[3] = 30;
+	a[4] = 40;
+	a[5] = 50;
+	a[6] = 60;
+	a[7] = 70;
+	a[8] = 80;
+	a[9] = 90;
+	Heap n = new Heap(a);
+	for(int x = 1; x <= n.getSize(); x++) {
+	    System.out.print(n.heap[x] + ", ");
+	}
+	System.out.println();
+	n.sort();
+	for(int x = 1; x <= n.getSize(); x++) {
+	    System.out.print(n.heap[x] + ", ");
 	}
     }
 

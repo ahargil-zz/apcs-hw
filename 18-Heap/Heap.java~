@@ -1,20 +1,60 @@
-  
+public class Heap {
 
-Welcome to GNU Emacs, one component of the GNU operating system.
+    private int[] heap;
+    private int size;
+    
+    public Heap() {
+	heap = new int[10];
+	size = 0;
+    }
 
-Emacs Tutorial	Learn basic keystroke commands
-Emacs Guided Tour	Overview of Emacs features at gnu.org
-View Emacs Manual	View the Emacs manual using Info
-Absence of Warranty	GNU Emacs comes with ABSOLUTELY NO WARRANTY
-Copying Conditions	Conditions for redistributing and changing Emacs
-Ordering Manuals	Purchasing printed copies of manuals
+    public Heap(int[] a) {
+	heap = a;
+	size = 0;
+    }
 
-To start...     Open a File     Open Home Directory     Customize Startup
-To quit a partially entered command, type Control-g.
+    public Heap(int a) {
+	heap = new int[a];
+	size = a.length;
+    }
 
-This is GNU Emacs 24.3.1 (i386-mingw-nt6.2.9200)
- of 2013-03-17 on MARVIN
-Copyright (C) 2013 Free Software Foundation, Inc.
+    private void insert(int n) {
+	int x = size + 1;
+	heap[x] = n;
+	while(x > 1 && heap[x] >= heap[x/2]) {
+	    int tmp = heap[x];
+	    heap[x] = heap[x/2];
+	    heap[x/2] = tmp;
+	    x = x/2;
+	}
+	size++;
+    }
 
-If an Emacs session crashed recently, type Meta-x recover-session RET
-to recover the files you were editing.
+    private int getMax() {
+	return heap[1];
+    }
+
+    private int getSize() {
+	return size;
+    }
+
+    private void sort() {
+	
+    }
+	
+
+    public static void main(String[] args) {
+	Heap h = new Heap();
+	h.insert(8);
+	h.insert(3);
+	h.insert(12);
+	h.insert(6);
+	h.insert(20);
+	h.insert(15);
+	h.insert(9);
+	for(int x = 1; x <= h.getSize(); x++) {
+	    System.out.print(h.heap[x] + ", ");
+	}
+    }
+
+}
